@@ -1,0 +1,55 @@
+{
+  "name": "rn-horizontal-switcher",
+  "version": "1.0.0",
+  "description": "A pretty, customizable React Native component for switching between tabs or e.g. selecting an item from a list.",
+  "main": "src/index.ts",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/balgamat/rn-horizontal-switcher.git"
+  },
+  "keywords": [
+    "react-native",
+    "react-component",
+    "react-native-component",
+    "react",
+    "react native",
+    "mobile",
+    "ios",
+    "android",
+    "ui",
+    "navigation",
+    "switcher",
+    "tabs",
+    "tab selector",
+    "selector"
+  ],
+  "author": "Matej Balga",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/balgamat/rn-horizontal-switcher.gitissues"
+  },
+  "homepage": "https://github.com/balgamat/rn-horizontal-switcher.git#readme",
+  "scripts": {
+    "build": "rm -rf ./dist/build && tsc",
+    "prepare": "yarn build"
+  },
+  "peerDependencies": {
+    "react": "^16.8.2",
+    "react-native": "0.59.0"
+  },
+  "dependencies": {
+    "ramda": "^0.26.1",
+    "rn-motion": "^1.0.2",
+    "styled-components": "^4.2.0"
+  },
+  "devDependencies": {
+    "@types/ramda": "^0.26.5",
+    "@types/react-native": "^0.57.60",
+    "@types/styled-components": "^4.1.14",
+    "prettier": "^1.17.0",
+    "pretty-quick": "^1.10.0",
+    "tslint": "^5.12.1",
+    "tslint-config-airbnb": "^5.11.1",
+    "tslint-config-prettier": "^1.18.0"
+  }
+}
