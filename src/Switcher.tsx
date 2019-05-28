@@ -1,5 +1,12 @@
 import React, { PureComponent, RefObject } from 'react';
-import { Animated, LayoutChangeEvent, ScrollView, Text } from 'react-native';
+import {
+  Animated,
+  LayoutChangeEvent,
+  NativeScrollEvent,
+  NativeSyntheticEvent,
+  ScrollView,
+  Text,
+} from 'react-native';
 import { pathOr } from 'ramda';
 import { Motion } from 'rn-motion';
 import { windowWidth } from './windowSize';
@@ -13,9 +20,34 @@ class Switcher extends PureComponent<SelectorProps> {
 
   scrollRef: RefObject<ScrollView> = React.createRef();
 
-  scrollableItemWidth = windowWidth;
+  scrollableItemWidth = windowWidth / 3;
   barX = 0;
   barWidth = 0;
+
+  handleScroll = ({
+    nativeEvent: { contentOffset },
+  }: NativeSyntheticEvent<NativeScrollEvent>) => {
+    const { options, selected, onSelect } = this.props;
+    const optionKeys = Object.keys(options);
+    const focusedOptionIndex = Math.min(
+      optionKeys.length,
+      Math.floor(
+        (contentOffset.x + this.scrollableItemWidth / 2) /
+          this.scrollableItemWidth,
+      ),
+    );
+    const focusedOption = optionKeys[focusedOptionIndex];
+
+    if (focusedOption !== selected) {
+      onSelect(focusedOption);
+    }
+
+    if (this.scrollRef.current) {
+      this.scrollRef.current!.scrollTo({
+        x: this.barX - this.scrollableItemWidth,
+      });
+    }
+  };
 
   saveMeasurement = ({
     item,
@@ -88,6 +120,8 @@ class Switcher extends PureComponent<SelectorProps> {
                 ? {}
                 : { width: '100%', justifyContent: 'space-around' }
             }
+            decelerationRate={'fast'}
+            onScrollEndDrag={scrollable ? this.handleScroll : undefined}
             onLayout={({
               nativeEvent: {
                 layout: { x, width },

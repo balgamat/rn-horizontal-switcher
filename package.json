@@ -1,6 +1,6 @@
 {
   "name": "rn-horizontal-switcher",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "A pretty, customizable React Native component for switching between tabs or e.g. selecting an item from a list.",
   "main": "src/index.ts",
   "repository": {
