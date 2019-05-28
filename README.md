@@ -11,7 +11,7 @@ Install from NPM using `npm install --save rn-horizontal-switcher` or, `yarn add
 ## Usage
 
 ```
-import { Switcher } from rn-horizontal-switcher';
+import Switcher from rn-horizontal-switcher';
 
 ...
 
